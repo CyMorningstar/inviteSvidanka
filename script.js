@@ -1,5 +1,5 @@
 const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
-const CHAT_ID = "1280916980";
+const CHAT_ID = "8966154037";
 
 // Логика убегающей кнопки
 // В script.js для кнопки "Нет"
@@ -38,20 +38,26 @@ function showChoices() {
 
 // Отправка в ТГ
 document.getElementById('send-preferences-btn').onclick = async () => {
+    const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
+    const CHAT_ID = "8966154037";
+    
     const selected = Array.from(document.querySelectorAll('input:checked')).map(i => i.value);
     const text = `Карина выбрала: ${selected.join(', ')}`;
     
-    // Используем encodeURIComponent, чтобы текст не сломался из-за пробелов или смайликов
+    // ПРАВИЛЬНАЯ СБОРКА ССЫЛКИ (без скобок!):
     const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=\({CHAT_ID}&text=\){encodeURIComponent(text)}`;
     
     try {
         let response = await fetch(url);
-        if (response.ok) {
-            alert("Спасибо, Карина! Данные отправлены.");
+        let data = await response.json(); // Получаем ответ от ТГ
+        
+        if (data.ok) {
+            alert("Ура! Данные отправлены!");
         } else {
-            alert("Ошибка отправки. Проверь консоль.");
+            alert("Ошибка Telegram: " + data.description);
         }
     } catch (e) {
-        console.error("Ошибка сети:", e);
+        alert("Ошибка сети! Попробуй выключить VPN, если он включен.");
+        console.error(e);
     }
 };
