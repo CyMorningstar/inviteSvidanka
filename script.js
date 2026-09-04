@@ -1,0 +1,42 @@
+const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
+const CHAT_ID = "1280916980";
+
+// Логика убегающей кнопки
+// В script.js для кнопки "Нет"
+const noBtn = document.getElementById('no-btn');
+const btnContainer = document.getElementById('btn-container');
+
+noBtn.addEventListener('mouseover', () => {
+    // Включаем "режим бегства"
+    noBtn.style.position = 'fixed'; 
+    noBtn.style.top = (Math.random() * 80) + 'vh';
+    noBtn.style.left = (Math.random() * 80) + 'vw';
+});
+
+// Дополнительно: чтобы на телефоне тоже работало
+noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    noBtn.style.position = 'fixed';
+    noBtn.style.top = (Math.random() * 80) + 'vh';
+    noBtn.style.left = (Math.random() * 80) + 'vw';
+});
+
+
+// Переход по клику на печать
+document.getElementById('stamp-btn').onclick = () => {
+    document.getElementById('bg-music').play();
+    document.getElementById('envelope-screen').classList.add('hidden');
+    document.getElementById('main-screen').classList.remove('hidden');
+};
+
+function showChoices() {
+    document.getElementById('main-screen').classList.add('hidden');
+    document.getElementById('choice-screen').classList.remove('hidden');
+}
+
+// Отправка в ТГ
+document.getElementById('send-preferences-btn').onclick = () => {
+    const selected = Array.from(document.querySelectorAll('input:checked')).map(i => i.value);
+    fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Карина выбрала: ${selected.join(', ')}`)
+    .then(() => alert("Спасибо, информация отправлена!"));
+};

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+    <audio id="bg-music" loop><source src="audio/music.mp3" type="audio/mpeg"></audio>
+
+    <!-- Экран 1: Встречает конверт -->
+    <div id="envelope-screen" class="screen">
+        <div class="envelope-container">
+            <img src="image/photo_1.png" id="env-img">
+            <!-- Кнопка-печать (накладывается поверх) -->
+            <button id="stamp-btn">
+                <img src="image/photo_p.png" style="width: 400px;">
+            </button>
+        </div>
+    </div>
+
+    <!-- Экран 2: Фото и Согласие -->
+    <div id="main-screen" class="screen hidden">
+        <div class="photo-wrapper">
+            <img src="image/фото Карина.jpg" class="photo">
+            <img src="image/фото Кирилл.jpg" class="photo">
+        </div>
+
+        <h2>Дорогая Карина, приглашаю тебя на свидание 07.09.2026</h2>
+            <div class="button-group" id="btn-container">
+        <button class="btn" id="yes-btn" onclick="showChoices()">Да, я согласна!"</button>
+        <button class="btn" id="no-btn">Нет</button>
+    </div>
+    </div>
+
+    <!-- Экран 3: Выбор предпочтений -->
+    <div id="choice-screen" class="screen hidden">
+        <h2>Что ты предпочитаешь?</h2>
+        <div id="preference-options">
+            <label><input type="checkbox" name="preferences" value="ПП чипсы"> ПП чипсы</label><br>
+            <label><input type="checkbox" name="preferences" value="Вкусовой чай"> Вкусовой чай</label><br>
+            <label><input type="checkbox" name="preferences" value="Вино"> Вино</label><br>
+            <label><input type="checkbox" name="preferences" value="Клубника"> Клубника</label><br>
+            <label><input type="checkbox" name="preferences" value="Сладкое"> Сладкое</label><br>
+            <label><input type="checkbox" name="preferences" value="Молочный коктейль"> Молочный коктейль</label><br>
+        </div>
+        <button id="send-preferences-btn" class="btn btn-yes" style="margin-top:20px;">Отправить</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
