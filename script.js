@@ -25,7 +25,7 @@ noBtn.addEventListener('touchstart', (e) => {
 // Переход по клику на печать
 document.getElementById('stamp-btn').onclick = () => {
     const music = document.getElementById('bg-music');
-    music.volume = 0.3; // Громкость 30%
+    music.volume = 0.1; // Громкость 30%
     music.play();
     document.getElementById('envelope-screen').classList.add('hidden');
     document.getElementById('main-screen').classList.remove('hidden');
