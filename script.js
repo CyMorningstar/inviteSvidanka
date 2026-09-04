@@ -24,7 +24,9 @@ noBtn.addEventListener('touchstart', (e) => {
 
 // Переход по клику на печать
 document.getElementById('stamp-btn').onclick = () => {
-    document.getElementById('bg-music').play();
+    const music = document.getElementById('bg-music');
+    music.volume = 0.3; // Громкость 30%
+    music.play();
     document.getElementById('envelope-screen').classList.add('hidden');
     document.getElementById('main-screen').classList.remove('hidden');
 };
@@ -35,8 +37,21 @@ function showChoices() {
 }
 
 // Отправка в ТГ
-document.getElementById('send-preferences-btn').onclick = () => {
+document.getElementById('send-preferences-btn').onclick = async () => {
     const selected = Array.from(document.querySelectorAll('input:checked')).map(i => i.value);
-    fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Карина выбрала: ${selected.join(', ')}`)
-    .then(() => alert("Спасибо, информация отправлена!"));
+    const text = `Карина выбрала: ${selected.join(', ')}`;
+    
+    // Используем encodeURIComponent, чтобы текст не сломался из-за пробелов или смайликов
+    const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=\({CHAT_ID}&text=\){encodeURIComponent(text)}`;
+    
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            alert("Спасибо, Карина! Данные отправлены.");
+        } else {
+            alert("Ошибка отправки. Проверь консоль.");
+        }
+    } catch (e) {
+        console.error("Ошибка сети:", e);
+    }
 };
