@@ -1,5 +1,5 @@
-const TOKEN = "AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
-const CHAT_ID = "8966154037";
+const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
+const CHAT_ID = "1280916980";
 
 // Логика убегающей кнопки
 // В script.js для кнопки "Нет"
@@ -38,8 +38,8 @@ function showChoices() {
 
 // Отправка в ТГ
 document.getElementById('send-preferences-btn').onclick = async () => {
-    const TOKEN = "AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
-    const CHAT_ID = "8966154037";
+    const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
+    const CHAT_ID = "1280916980";
     
     const selected = Array.from(document.querySelectorAll('input:checked')).map(i => i.value);
     const text = `Карина выбрала: ${selected.join(', ')}`;
