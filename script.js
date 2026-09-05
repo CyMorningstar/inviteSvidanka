@@ -1,5 +1,5 @@
 const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
-const CHAT_ID = "1280916980"; 
+const CHAT_ID = 1280916980; 
 
 document.getElementById('stamp-btn').onclick = () => {
     const music = document.getElementById('bg-music');
