@@ -1,6 +1,3 @@
-const TOKEN = "8966154037:AAFNqH4hKJBw1QbK1jljIU_YsUi0VS9rnv8"; 
-const CHAT_ID = "1280916980";
-
 // Логика убегающей кнопки
 // В script.js для кнопки "Нет"
 const noBtn = document.getElementById('no-btn');
